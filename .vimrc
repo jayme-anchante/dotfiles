@@ -40,12 +40,10 @@ set encoding=utf-8
 " Virtualenv support
 py3 << EOF
 import os
-import sys
 if 'VIRTUAL_ENV' in os.environ:
-	project_base_dir = os.environ['VIRTUAL_ENV']
-	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-	exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'),
-	dict(__file__=activate_this))
+	base_path = os.environ['VIRTUAL_ENV']
+	venv_path = os.path.join(base_path, "bin", "activate")
+	os.system("source {}".format(venv_path)),
 EOF
 
 
@@ -64,10 +62,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'plasticboy/vim-markdown'
+Plug 'chrisbra/csv.vim'
+Plug 'vim-scripts/excel.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
 
 " SimpylFold see docstring for folded code
 let g:SimpylFold_docstring_preview=1
@@ -97,5 +97,5 @@ au BufNewFile,BufRead *.js, *.html, *.css;
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-" flag unnecessart whitespace
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" excel.vim
+let g:zipPlugin_ext = '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,*.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,*.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx'
