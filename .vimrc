@@ -54,10 +54,9 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
-Plug 'vim-scripts/excel.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json'
-Plut 'jpalardy/vim-slime'
+Plug 'jpalardy/vim-slime'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -74,17 +73,10 @@ let python_highlight_all=1
 syntax on
 
 " colorscheme
-set background=dark
-colorscheme solarized
-
-" change between solarized and zenburn 
-call togglebg#map("<F5>")
+colorscheme zenburn
 
 " Other configuration for web development
 au BufNewFile,BufRead *.js, *.html, *.css;
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-
-" excel.vim
-let g:zipPlugin_ext = '*.zip,*.jar,*.xpi,*.ja,*.war,*.ear,*.celzip,*.oxt,*.kmz,*.wsz,*.xap,*.docx,*.docm,*.dotx,*.dotm,*.potx,*.potm,*.ppsx,*.ppsm,*.pptx,*.pptm,*.ppam,*.sldx,*.thmx,*.crtx,*.vdw,*.glox,*.gcsx,*.gqsx'
