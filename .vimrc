@@ -37,16 +37,6 @@ au BufNewFile,BufRead *.py;
 " UTF-8
 set encoding=utf-8
 
-" Virtualenv support
-py3 << EOF
-import os
-if 'VIRTUAL_ENV' in os.environ:
-	base_path = os.environ['VIRTUAL_ENV']
-	venv_path = os.path.join(base_path, "bin", "activate")
-	os.system("source {}".format(venv_path)),
-EOF
-
-
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -57,14 +47,17 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
+Plug 'plytophogy/vim-virtualenv'
 Plug 'jnurmine/Zenburn'
-Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'plasticboy/vim-markdown'
 Plug 'chrisbra/csv.vim'
 Plug 'vim-scripts/excel.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'elzr/vim-json'
+Plut 'jpalardy/vim-slime'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -81,12 +74,8 @@ let python_highlight_all=1
 syntax on
 
 " colorscheme
-if has('gui_running')
-	set background=dark
-	colorscheme solarized
-else
-	colorscheme zenburn
-endif
+set background=dark
+colorscheme solarized
 
 " change between solarized and zenburn 
 call togglebg#map("<F5>")
